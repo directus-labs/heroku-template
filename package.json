@@ -1,0 +1,12 @@
+{
+  "name": "directus-project",
+  "version": "1.0.0",
+  "description": "Directus",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "directus": "^9.0.0-rc.40",
+    "pg": "^8.5.1"
+  }
+}

@@ -1,0 +1,201 @@
+{
+  "name": "Directus",
+  "website": "https://directus.io/",
+  "description": "An Instant App & API for your SQL Database.",
+  "repository": "https://github.com/directus/heroku",
+  "logo": "https://raw.githubusercontent.com/directus/heroku/master/.github/logo.png",
+  "keywords": [
+    "directus",
+    "productivity",
+    "dashboard",
+    "admin",
+    "postgres",
+    "mysql",
+    "cms",
+    "headless-cms",
+    "data-platform"
+  ],
+  "success_url": "/admin",
+  "env": {
+    "ADMIN_EMAIL": {
+      "description": "The initial admin email.",
+      "value": ""
+    },
+    "ADMIN_PASSWORD": {
+      "description": "The initial admin password.",
+      "value": ""
+    },
+    "CONFIG_PATH": {
+      "description": "Application config loader path.",
+      "value": "/app/directus.config.js"
+    },
+    "PUBLIC_URL": {
+      "description": "Application public URL.",
+      "value": "/"
+    },
+    "DB_CLIENT": {
+      "description": "Database server type.",
+      "value": "pg"
+    },
+    "RATE_LIMITER_ENABLED": {
+      "description": "Whether the rate limiter should be enabled or not.",
+      "value": "true"
+    },
+    "RATE_LIMITER_STORE": {
+      "description": "The rate limiter storage type.",
+      "value": "redis"
+    },
+    "RATE_LIMITER_POINTS": {
+      "description": "Rate limiter points.",
+      "value": "30"
+    },
+    "RATE_LIMITER_DURATION": {
+      "description": "Rate limiter duration in minutes.",
+      "value": "1"
+    },
+    "RATE_LIMITER_KEY_PREFIX": {
+      "description": "The rate limiter key prefixes.",
+      "value": "rate-limitter"
+    },
+    "CACHE_ENABLED": {
+      "description": "Whether the cache should be enabled or not.",
+      "value": "true"
+    },
+    "CACHE_STORE": {
+      "description": "The cache store to use.",
+      "value": "redis"
+    },
+    "CACHE_NAMESPACE": {
+      "description": "The cache namespace.",
+      "value": "cache"
+    },
+    "STORAGE_LOCATIONS": {
+      "description": "The storage key. Please refer to the docs for more information.",
+      "value": "cloud"
+    },
+    "STORAGE_CLOUD_DRIVER": {
+      "description": "The storage driver.",
+      "value": "s3"
+    },
+    "STORAGE_CLOUD_ROOT": {
+      "description": "Storage root location.",
+      "value": "/"
+    },
+    "STORAGE_CLOUD_PUBLIC_URL": {
+      "description": "The storage public URL.",
+      "value": "https://your-bucket.nyc3.digitaloceanspaces.com"
+    },
+    "STORAGE_CLOUD_KEY": {
+      "description": "The storage key id.",
+      "value": "your-s3-key-id"
+    },
+    "STORAGE_CLOUD_SECRET": {
+      "description": "The storage secret key.",
+      "value": "your-s3-secret-key"
+    },
+    "STORAGE_CLOUD_ENDPOINT": {
+      "description": "The storage endpoint URL.",
+      "value": "https://nyc3.digitaloceanspaces.com"
+    },
+    "STORAGE_CLOUD_BUCKET": {
+      "description": "The storage bucket name.",
+      "value": "your-bucket"
+    },
+    "STORAGE_CLOUD_REGION": {
+      "description": "The storage bucket region.",
+      "value": "nyc3"
+    },
+    "KEY": {
+      "description": "The application key.",
+      "generator": "secret"
+    },
+    "SECRET": {
+      "description": "The application secret key.",
+      "generator": "secret"
+    },
+    "ACCESS_TOKEN_TTL": {
+      "description": "The access token TTL.",
+      "value": "15m"
+    },
+    "REFRESH_TOKEN_TTL": {
+      "description": "The refresh token TTL.",
+      "value": "7d"
+    },
+    "REFRESH_TOKEN_COOKIE_SECURE": {
+      "description": "Whether cookies should be secure (http-only) or not.",
+      "value": "true"
+    },
+    "REFRESH_TOKEN_COOKIE_SAME_SITE": {
+      "description": "Same site cookie policy.",
+      "value": "lax"
+    },
+    "OAUTH_PROVIDERS": {
+      "description": "OAuth providers.",
+      "required": false,
+      "value": ""
+    },
+    "EXTENSIONS_PATH": {
+      "description": "The application's extension folder.",
+      "value": "/app/extensions"
+    },
+    "EMAIL_TRANSPORT": {
+      "description": "The email transport.",
+      "value": "smtp"
+    },
+    "EMAIL_SMTP_POOL": {
+      "description": "Whether to setup smtp pooling or not.",
+      "value": "true"
+    },
+    "EMAIL_SMTP_HOST": {
+      "description": "The email server host.",
+      "value": "smtp.mailgun.org"
+    },
+    "EMAIL_SMTP_PORT": {
+      "description": "The email server port.",
+      "value": "587"
+    },
+    "EMAIL_SMTP_SECURE": {
+      "description": "Whether email connection is secure or not.",
+      "value": "false"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/nodejs",
+  "addons": [
+    {
+      "as": "MAILGUN",
+      "plan": "mailgun:starter"
+    },
+    {
+      "as": "DATABASE",
+      "plan": "heroku-postgresql:hobby-dev",
+      "options": {
+        "version": "12"
+      }
+    },
+    {
+      "as": "REDIS",
+      "plan": "heroku-redis:hobby-dev",
+      "options": {
+        "version": "6"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
+    }
+  }
+}
