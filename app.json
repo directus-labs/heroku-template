@@ -3,7 +3,7 @@
   "website": "https://directus.io/",
   "description": "An Instant App & API for your SQL Database.",
   "repository": "https://github.com/directus/heroku",
-  "logo": "https://raw.githubusercontent.com/directus/heroku/master/.github/logo.png",
+  "logo": "https://raw.githubusercontent.com/directus-community/heroku-template/master/.github/logo.png",
   "keywords": [
     "directus",
     "productivity",
