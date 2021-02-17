@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Directus",
   "scripts": {
-    "start": "node index.js"
+    "start": "directus start"
   },
   "dependencies": {
     "directus": "^9.0.0-rc.40",
