@@ -1,3 +1,6 @@
+![Community-maintained. 
+This project is not maintained by the Directus Core Team, but by our wider community. Interested in taking it on? Get in touch!](.github/community-maintained.svg)
+
 # Directus for Heroku
 
 <p align="center">
